@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Currency Converter</string>
+    <string name="image">Image</string>
+    <string name="likes">%1$d likes</string>
+    <string name="by">By %1$s</string>
+    <string name="retry">Retry</string>
+    <string name="search">Search</string>
+    <string name="scroll_down">Scroll Down</string>
+    <string name="scroll_up">Scroll Up</string>
+    <string name="save_to_gallery">Save to Gallery</string>
+    <string name="regular_resolution">Regular resolution</string>
+    <string name="full_resolution">Full resolution</string>
+    <string name="btn_calculate">Calculate</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_convert">Convert</string>
+    <string name="btn_approve">Approve</string>
+    <string name="btn_done">Done</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_precedes">Precedes</string>
+    <string name="title_approval_required">Approval Required</string>
+    <string name="message_approval_confirmation">You are about to get</string>
+    <string name="btn_configuration">Configuration</string>
+    <string name="btn_currency_configuration">Currency Configuration</string>
+    <string name="approval_duration">Approval Duration</string>
+    <string name="check_enable">Enable</string>
+</resources>

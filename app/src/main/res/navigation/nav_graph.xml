@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.exchange.hamilton.presentation.fragments.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/actionHomeToCurrencyList"
+            app:destination="@id/currencyListFragment" />
+        <action
+            android:id="@+id/actionHomeToConfigurationFragment"
+            app:destination="@id/configurationFragment" />
+        <action
+            android:id="@+id/actionHomeToConvertFragment"
+            app:destination="@id/convertFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/configurationFragment"
+        android:name="com.exchange.hamilton.presentation.fragments.ConfigurationFragment"
+        android:label="ConfigurationFragment">
+
+        <action
+            android:id="@+id/actionConfigurationToCurrencyList"
+            app:destination="@id/currencyConfigurationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/convertFragment"
+        android:name="com.exchange.hamilton.presentation.fragments.ConvertFragment"
+        android:label="ConvertFragment">
+        <action
+            android:id="@+id/actionConvertToApproval"
+            app:destination="@id/approvalFragment" />
+
+        <action
+            android:id="@+id/actionApprovalToConfirmation"
+            app:destination="@id/confirmationFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.exchange.hamilton.presentation.fragments.ConfirmFragment"
+        android:label="ConfirmFragment">
+        <action
+            android:id="@+id/actionConfirmationToHome"
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+
+    <dialog
+        android:id="@+id/currencyListFragment"
+        android:name="com.exchange.hamilton.presentation.fragments.CurrencyListFragment"
+        android:label="fragment_currency_list"
+        tools:layout="@layout/fragment_currency_list" />
+
+    <dialog
+        android:id="@+id/currencyConfigurationFragment"
+        android:name="com.exchange.hamilton.presentation.fragments.CurrencyConfigurationFragment"
+        android:label="fragment_currency_list"
+        tools:layout="@layout/fragment_currency_configuration" />
+
+
+     <dialog
+        android:id="@+id/approvalFragment"
+        android:name="com.exchange.hamilton.presentation.fragments.ApprovalFragment"
+        android:label="fragment_approval"
+        tools:layout="@layout/fragment_approval" />
+
+
+</navigation>

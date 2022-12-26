@@ -1,0 +1,5 @@
+<resources>
+    <string name="exchange_api_key">79ece9b5cd96b7ec8ee68d8f</string>
+    <string name="exchange_base_url">https://v6.exchangerate-api.com/v6/</string>
+
+</resources>

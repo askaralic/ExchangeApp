@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="currency" type="com.exchange.hamilton.data.model.Currency" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/bottomPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:orientation="vertical">
+            <TextView
+                style="@style/commonTextView"
+                android:text="@string/title_approval_required"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/txtApprovalMessage"
+                style="@style/commonTextView"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                tools:text="@tools:sample/lorem/random"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/bottomPanel"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnCancel"
+                app:backgroundTint="@null"
+                android:background="@drawable/button_common_blue_green"
+                android:layout_margin="10dp"
+                android:text="@string/btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/commonButtonView" />
+
+            <Button
+                app:backgroundTint="@null"
+                android:id="@+id/btnApprove"
+                android:background="@drawable/button_common_green_blue"
+                android:layout_margin="10dp"
+                android:text="@string/btn_approve"
+                style="@style/commonButtonView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:foreground="?selectableItemBackground">
+
+    <data>
+        <variable
+            name="currency"
+            type="com.exchange.hamilton.data.model.AvailableCurrencies" />
+
+    </data>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp">
+
+
+            <TextView
+                style="@style/commonTextView"
+                android:id="@+id/txtCurrencyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@{currency.currencyName}"
+                tools:text="@tools:sample/us_phones"
+                android:textSize="13sp"
+                android:textStyle="normal"/>
+
+
+            <TextView
+                style="@style/commonTextView"
+                android:id="@+id/txtCurrencyAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                tools:text="@tools:sample/us_phones"
+                android:text='@{String.format("%.1f",currency.currencyAmount)}' />
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>
