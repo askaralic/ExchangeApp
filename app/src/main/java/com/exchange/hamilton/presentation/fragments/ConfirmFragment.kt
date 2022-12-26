@@ -44,8 +44,8 @@ class ConfirmFragment : DaggerFragment(R.layout.fragment_confirmation) {
 
 
     private fun bindViewWithValues() {
-        binding.txtSuccessMessage.setText("Great now you have " + String.format("%.2f", viewModel.convertAmount(viewModel.destinationCurrencyAmount)).toDouble()+" "+viewModel.destinationCurrency + " in your account.")
-        binding.txtConversionRate.setText("Your conversion rate was 1/" +viewModel.destinationCurrencyAmount )
+        binding.txtSuccessMessage.setText("Great now you have " + String.format("%.2f", viewModel.convertAmount(viewModel.amountToConvert ?: 0f))+" "+(viewModel.selectedDestinationCurrency?.CurrencyName ?:"") + " in your account.")
+        binding.txtConversionRate.setText("Your conversion rate was 1/" + (viewModel.getConversionRate() ?: 0f))
     }
 
     fun showMessage(message:String){

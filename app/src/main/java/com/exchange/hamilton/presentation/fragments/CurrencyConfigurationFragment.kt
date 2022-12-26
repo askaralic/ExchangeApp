@@ -75,8 +75,10 @@ class CurrencyConfigurationFragment : BottomSheetDialogFragment() {
         job?.cancel()
         job = lifecycleScope.launch {
             dataSet.clear()
+            binding.progress.visibility = View.VISIBLE
             viewModel.getCurrency()?.let { dataSet.addAll(it.availableCurrencies) }
             setAdapter()
+            binding.progress.visibility = View.GONE
         }
     }
     private fun saveCurrencyList() {

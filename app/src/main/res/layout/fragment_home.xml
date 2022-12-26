@@ -78,7 +78,7 @@
                         android:layout_height="wrap_content"
                         tools:text="AED"
                         android:textColor="@color/purple_500"
-                        android:text='@{String.format("%s",viewModel.sourceCurrency)}' />
+                        android:text='@{String.format("%s",viewModel.selectedSourceCurrency.CurrencyName ?? "")}' />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -114,12 +114,12 @@
 
                     <TextView
                         style="@style/commonTextView"
-                        android:id="@+id/txtToCurrency"
+                        android:id="@+id/txtDestinationCurrency"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:text="AED"
                         android:textColor="@color/purple_500"
-                        android:text='@{String.format("%s",viewModel.destinationCurrency)}' />
+                        android:text='@{String.format("%s",viewModel.selectedDestinationCurrency.CurrencyName ?? "")}' />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -151,7 +151,7 @@
 
                 <Button
                     style="@style/commonButtonView"
-                    android:id="@+id/btnConvert"
+                    android:id="@+id/btnCalculate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_calculate" />

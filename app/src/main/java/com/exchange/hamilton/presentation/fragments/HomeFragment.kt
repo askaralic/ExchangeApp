@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import dagger.android.support.DaggerFragment
 import com.exchange.hamilton.R
+import com.exchange.hamilton.data.model.AvailableCurrencies
 import com.exchange.hamilton.databinding.FragmentHomeBinding
 import com.exchange.hamilton.presentation.viewmodels.HomeViewModel
 import com.exchange.hamilton.utils.hideSoftKeyboard
@@ -43,15 +44,20 @@ class HomeFragment : DaggerFragment(R.layout.fragment_home) {
             viewModel.operation = 2
             findNavController().navigate(R.id.actionHomeToCurrencyList)
         }
-        binding.btnConvert.setOnClickListener{
+        binding.btnCalculate.setOnClickListener{
             activity?.hideSoftKeyboard()
-            if(viewModel.sourceCurrency.isNullOrEmpty()){
+            if(viewModel.selectedSourceCurrency == null){
                 showMessage("Please choose the source currency")
-            }else if(viewModel.destinationCurrency.isNullOrEmpty()){
+            }else if(viewModel.selectedDestinationCurrency == null){
                 showMessage("Please choose the destination currency")
             }else if(binding.edtAmountToConvert.text.isNullOrEmpty()){
                 showMessage("Please enter the amount to convert")
             }else {
+                try {
+                    viewModel.amountToConvert = binding.edtAmountToConvert.text.toString().toFloat()
+                }catch (_:Exception){
+
+                }
                 findNavController().navigate(R.id.actionHomeToConvertFragment)
             }
         }
@@ -60,13 +66,17 @@ class HomeFragment : DaggerFragment(R.layout.fragment_home) {
         }
         setFragmentResultListener(123.toString()) { key, bundle ->
             if(viewModel.operation ==1){
-                viewModel.sourceCurrency = bundle.getString("currency")!!
-                viewModel.sourceCurrencyAmount = bundle.getDouble("amount").toFloat()
-                binding.txtSourceCurrency.setText(viewModel.sourceCurrency)
+                val item = AvailableCurrencies()
+                item.CurrencyAmount = bundle.getFloat("amount")
+                item.CurrencyName = bundle.getString("currency")!!
+                viewModel.selectedSourceCurrency = item
+                binding.txtSourceCurrency.setText(item.CurrencyName)
             }else{
-                viewModel.destinationCurrency = bundle.getString("currency")!!
-                viewModel.destinationCurrencyAmount = bundle.getDouble("amount").toFloat()
-                binding.txtToCurrency.setText(viewModel.destinationCurrency)
+                val item = AvailableCurrencies()
+                item.CurrencyAmount = bundle.getFloat("amount")
+                item.CurrencyName = bundle.getString("currency")!!
+                viewModel.selectedDestinationCurrency = item
+                binding.txtDestinationCurrency.setText(item.CurrencyName)
             }
             //Toast.makeText(activity, "received " + viewModel.sourceCurrency + " amount"+viewModel.sourceCurrencyAmount, Toast.LENGTH_SHORT).show()
         }

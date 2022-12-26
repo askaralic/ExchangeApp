@@ -31,7 +31,7 @@
                 android:layout_margin="10dp"
                 android:text="@{currency.currencyName}"
                 tools:text="@tools:sample/us_phones"
-                android:textSize="13sp"
+                android:textSize="30sp"
                 android:textStyle="normal"/>
 
 
@@ -42,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 tools:text="@tools:sample/us_phones"
+                android:textSize="20sp"
                 android:text='@{String.format("%.1f",currency.currencyAmount)}' />
         </LinearLayout>
 

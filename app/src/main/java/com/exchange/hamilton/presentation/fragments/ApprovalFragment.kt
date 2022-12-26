@@ -47,7 +47,9 @@ class ApprovalFragment : BottomSheetDialogFragment() {
     }
 
     private fun bindViewWithValue() {
-        binding.txtApprovalMessage.setText("Your are about to get "+ viewModel.destinationCurrencyAmount +" "+ viewModel.destinationCurrency +" for "+ viewModel.sourceCurrencyAmount + " "+ viewModel.sourceCurrency +". Do you approve this transaction")
+        binding.txtApprovalMessage.setText("Your are about to get "+String.format("%.2f",  viewModel.convertAmount(viewModel.amountToConvert ?: 0f))+" "+ (viewModel.selectedDestinationCurrency?.CurrencyName
+            ?: "") +" for "+ (viewModel.amountToConvert
+            ?: 0) + " "+ viewModel.selectedSourceCurrency?.CurrencyName +". Do you approve this transaction")
     }
 
     private fun initEvents() {

@@ -6,6 +6,7 @@ import dagger.Provides
 import com.exchange.hamilton.BuildConfig
 import com.exchange.hamilton.api.APIService
 import com.exchange.hamilton.utils.Config
+import com.google.gson.GsonBuilder
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -41,10 +42,13 @@ object NetworkModule {
     @Singleton
     @Provides
     fun providesRetrofit(client: OkHttpClient): Retrofit {
+        val gson = GsonBuilder()
+            .setLenient()
+            .create()
         return Retrofit.Builder()
             .baseUrl(Config.BASE_URL_UNSPLASH)
             .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
 

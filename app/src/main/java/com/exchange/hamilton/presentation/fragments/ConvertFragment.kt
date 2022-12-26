@@ -39,7 +39,7 @@ class ConvertFragment : DaggerFragment(R.layout.fragment_convert) {
         initEventsWithValues()
 
         setFragmentResultListener(124.toString()) { key, bundle ->
-           if(bundle.getInt("action")!! == 1){
+           if(bundle.getInt("action") == 1){
                findNavController().popBackStack()
                findNavController().navigate(R.id.actionApprovalToConfirmation)
            }
@@ -66,9 +66,9 @@ class ConvertFragment : DaggerFragment(R.layout.fragment_convert) {
     }
 
     private fun bindViewWithValues() {
-        binding.txtFinalAmount.setText(
-            String.format("%.2f", viewModel.convertAmount(viewModel.destinationCurrencyAmount)).toDouble()
-                .toString() + " " + viewModel.destinationCurrency)
+        binding.txtTotalAmount.setText(
+            String.format("%.2f", viewModel.convertAmount(viewModel.amountToConvert ?: 0f)).toFloat()
+                .toString())
     }
 
     fun showMessage(message:String){

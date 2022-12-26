@@ -64,11 +64,13 @@ class CurrencyListFragment : BottomSheetDialogFragment() {
     private  fun setAdapter() {
         if(adapter == null){
             binding.progress.visibility= View.VISIBLE
-            adapter = CurrencyAdapter(dataSet,{
-                setFragmentResult(123.toString(), bundleOf("amount" to it.CurrencyAmount,"currency" to it.CurrencyName))
-                Toast.makeText(activity, it.CurrencyName, Toast.LENGTH_SHORT).show()
+            adapter = CurrencyAdapter(dataSet) {
+                setFragmentResult(
+                    123.toString(),
+                    bundleOf("amount" to it.CurrencyAmount, "currency" to it.CurrencyName)
+                )
                 dismiss()
-            })
+            }
             binding.progress.visibility= View.GONE
         }
         binding.listViewCurrencyList.adapter=adapter
@@ -79,10 +81,14 @@ class CurrencyListFragment : BottomSheetDialogFragment() {
         job?.cancel()
         job = lifecycleScope.launch {
             dataSet.clear()
+            binding.progress.visibility = View.VISIBLE
             viewModel.getCurrency()?.let {
-                var filteredList = it.availableCurrencies.filter { x -> x.shouldEnable == true }
-                dataSet.addAll(filteredList)
-                setAdapter()
+                if(it.availableCurrencies != null && !it.availableCurrencies.isNullOrEmpty() ) {
+                    var filteredList = it.availableCurrencies.filter { x -> x.shouldEnable == true }
+                    dataSet.addAll(filteredList)
+                    setAdapter()
+                    binding.progress.visibility = View.GONE
+                }
             } }
 
     }

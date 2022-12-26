@@ -38,7 +38,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text='@{String.format("%s",viewModel.sourceCurrency)}'
+                        android:text='@{String.format("%s",viewModel.selectedSourceCurrency.CurrencyName)}'
                         tools:text="USD" />
 
                     <TextView
@@ -47,7 +47,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text='@{String.format("%s",viewModel.sourceCurrencyAmount)}'
+                        android:text='@{String.format("%s",viewModel.amountToConvert)}'
                         tools:text="1.00" />
                 </LinearLayout>
             </LinearLayout>
@@ -75,39 +75,23 @@
                     android:gravity="center">
 
                     <TextView
-                        android:id="@+id/txtToCurrency"
+                        android:id="@+id/txtDestinationCurrency"
                         style="@style/commonTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text='@{String.format("%s",viewModel.destinationCurrency)}'
+                        android:text='@{String.format("%s",viewModel.selectedDestinationCurrency.CurrencyName)}'
                         tools:text="USD" />
 
                     <TextView
-                        android:id="@+id/txtToCurrencyAmount"
+                        android:id="@+id/txtTotalAmount"
                         style="@style/commonTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text='@{String.format("%s",viewModel.destinationCurrencyAmount)}'
                         tools:text="1.00" />
 
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txtFinalAmount"
-                    style="@style/commonTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0.0"
-                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
